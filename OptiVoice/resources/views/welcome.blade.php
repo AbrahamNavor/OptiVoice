@@ -10,7 +10,7 @@
     <div class="container mt-5">
         <div class="jumbotron text-center">
             <h1 class="display-4">Welcome to OptiVoice</h1>
-            <p class="lead">Hola Mundo</p>
+            <p class="lead">Hola Mundoooo</p>
             <hr class="my-4">
             <p>Compramos Carros y Camionetas Para Desarmar</p>
             <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>

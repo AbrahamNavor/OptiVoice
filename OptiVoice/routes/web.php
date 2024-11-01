@@ -2,6 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::view('/','inicio')->name('rutaInicio');
+Route::view('/panel','panel')->name('rutaPanel');
+Route::view('/creacion_tareas','creacion_tareas')->name('rutaCreacion');
