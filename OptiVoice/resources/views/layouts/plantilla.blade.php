@@ -25,13 +25,13 @@
         <div class="offcanvas-body">
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{route('rutaInicio')}}">Inicio</a>
+                <a class="nav-link active {{request()->routeIs('rutaInicio')?'text-warning':''}}" aria-current="page" href="{{route('rutaInicio')}}">Inicio</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{route('rutaPanel')}}">Panel de control</a>
+                <a class="nav-link {{request()->routeIs('rutaPanel')?'text-warning':''}}" href="{{route('rutaPanel')}}">Panel de control</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{route('rutaCreacion')}}">Creación de tareas</a>
+                <a class="nav-link {{request()->routeIs('rutaCreacion')?'text-warning':''}}" href="{{route('rutaCreacion')}}">Creación de tareas</a>
             </li>
             </ul>
         </div>
