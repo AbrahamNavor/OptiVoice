@@ -24,9 +24,9 @@ class validadorTareas extends FormRequest
         return [
             'txtnombre' => 'required|string|max:255',
             'txtdescripcion' => 'required|string|max:1000',
-            'txtfecha' => 'required|date',
+            'txtfecha' => 'required|date_format:Y-m-d|after:today',
             'txthora' => 'required|date_format:H:i',
-            'txtcontrasena' => 'required|string|min:8|confirmed',
+            'txtcontrasena' => 'required|string|min:8',
         ];
     }
 }

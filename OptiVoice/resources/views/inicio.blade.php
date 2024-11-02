@@ -3,8 +3,8 @@
 
 @section('contenido')
 <div class="container">
-    <h1>Bienvenido a OptiVoice</h1>
-    <a href="{{route('rutaCreacion')}}" class="btn btn-highlight btn-success">Crear tarea</a>
-    <a href="{{route('rutaPanel')}}" class="btn btn-highlight btn-secondary">Revisar tareas</a>
+    <h1>{{__('Bienvenido a OptiVoice')}}</h1>
+    <a href="{{route('rutaCreacion')}}" class="btn btn-highlight btn-success">{{__('Crear tarea')}}</a>
+    <a href="{{route('rutaPanel')}}" class="btn btn-highlight btn-secondary">{{__('Revisar tareas')}}</a>
 </div>
 @endsection

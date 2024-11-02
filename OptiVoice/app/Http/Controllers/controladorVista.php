@@ -27,6 +27,9 @@ class controladorVista extends Controller
         // Por ejemplo, guardar la tarea en la base de datos
         // Tarea::create($validated);
 
-        return redirect('/')->with('success', 'Tarea procesada correctamente');
+        session()->flash('exito', 'Tarea guardada correctamente');
+
+        return to_route('rutaCreacion');
+        //return redirect('/')->with('success', 'Tarea procesada correctamente');
     }
 }

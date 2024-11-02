@@ -6,7 +6,7 @@
     <title>@yield('titulo')</title>
     @vite(['resources/js/app.js'])
     @vite(['resources/css/styles.css'])
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
 <body class="d-flex flex-column min-vh-100">
@@ -19,19 +19,19 @@
         </button>
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
         <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Más</h5>
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">{{__('Más')}}</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
             <li class="nav-item">
-                <a class="nav-link active {{request()->routeIs('rutaInicio')?'text-warning':''}}" aria-current="page" href="{{route('rutaInicio')}}">Inicio</a>
+                <a class="nav-link active {{request()->routeIs('rutaInicio')?'text-warning':''}}" aria-current="page" href="{{route('rutaInicio')}}">{{__('Inicio')}}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{request()->routeIs('rutaPanel')?'text-warning':''}}" href="{{route('rutaPanel')}}">Panel de control</a>
+                <a class="nav-link {{request()->routeIs('rutaPanel')?'text-warning':''}}" href="{{route('rutaPanel')}}">{{__('Panel de control')}}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{request()->routeIs('rutaCreacion')?'text-warning':''}}" href="{{route('rutaCreacion')}}">Creación de tareas</a>
+                <a class="nav-link {{request()->routeIs('rutaCreacion')?'text-warning':''}}" href="{{route('rutaCreacion')}}">{{__('Creación de tareas')}}</a>
             </li>
             </ul>
         </div>
