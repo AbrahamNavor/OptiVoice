@@ -26,8 +26,8 @@
 }
 
 .container2 {
-    width: 100%; /* Ajusta este valor para controlar el ancho */
-    max-width: 600px; /* Establece un límite de ancho si es necesario */
+    width: 670px; /* Ajusta este valor para controlar el ancho */
+    max-width: 100%; /* Establece un límite de ancho si es necesario */
     padding: 20px;
     margin: auto;
     background-color: rgba(255, 255, 255, 0.8);
@@ -76,4 +76,27 @@ h1 {
         padding: 10px 20px;
         font-size: 0.9rem;
     }
+}
+
+
+.table {
+    
+    width: 100%; /* Hace que la tabla ocupe todo el ancho del contenedor */
+    border-collapse: collapse; /* Quita los espacios entre celdas para un ajuste preciso */
+}
+
+/* Estilos para las celdas de la tabla */
+.table th, .table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd; /* Línea separadora entre filas */
+}
+
+.table th {
+    background-color: #f1bc76;
+    color: #333;
+}
+
+.table td {
+    background-color: rgba(255, 255, 255, 0.9);
 }

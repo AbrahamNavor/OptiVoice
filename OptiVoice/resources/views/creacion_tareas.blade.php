@@ -2,6 +2,7 @@
 @section('titulo','Tarea nueva | OptiVoice')
 
 @section('contenido')
+@vite(['resources/css/styles.css'])
     <div class="container2">
 
         @if (session('exito'))

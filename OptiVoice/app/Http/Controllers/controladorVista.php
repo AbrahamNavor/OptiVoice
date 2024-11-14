@@ -19,6 +19,10 @@ class controladorVista extends Controller
         return view('creacion_tareas');
     }
 
+    public function index(){
+        return view('index');
+    }
+
     public function procesarTarea(validadorTareas $request){
         // Validar los datos de la tarea
         $validated = $request->validated();
