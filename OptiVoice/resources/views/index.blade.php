@@ -1,4 +1,4 @@
-@extends('layouts.plantilla')
+@extends('layouts.plantillainicio')
 @section('titulo','Inicio | OptiVoice')
 
 @section('contenido')

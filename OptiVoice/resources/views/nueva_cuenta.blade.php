@@ -1,4 +1,4 @@
-@extends('layouts.plantilla')
+@extends('layouts.plantillainicio')
 @section('titulo','Tarea nueva | OptiVoice')
 
 @section('contenido')
@@ -44,21 +44,23 @@
 }
 
 
-form{
-    margin-top: 100px; 
+form {
+    margin-top: 150px; 
+    margin-bottom: auto;
     height: 880px;
     width: 400px;
-    background-color: rgba(255,255,255,0.13);
+    background-color: rgba(0, 0, 0, 0.6); /* Cambiado a un color más oscuro */
     position: absolute;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
     border-radius: 10px;
     backdrop-filter: blur(10px);
-    border: 2px solid rgba(255,255,255,0.1);
-    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
     padding: 50px 35px;
 }
+
 
 
 form *{

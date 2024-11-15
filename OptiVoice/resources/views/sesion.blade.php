@@ -1,4 +1,4 @@
-@extends('layouts.plantilla')
+@extends('layouts.plantillainicio')
 @section('titulo','Tarea nueva | OptiVoice')
 
 @section('contenido')
@@ -47,7 +47,8 @@
 form{
     height: 520px;
     width: 400px;
-    background-color: rgba(255,255,255,0.13);
+    background-color: rgba(0, 0, 0, 0.6); /* Cambiado a un color más oscuro */
+
     position: absolute;
     transform: translate(-50%,-50%);
     top: 50%;
