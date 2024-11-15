@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\validadorTareas;
+use App\Http\Requests\validadorNuevaCuenta;
+use App\Http\Requests\validadorInicioSesion;
 
 class controladorVista extends Controller
 {
@@ -31,17 +33,31 @@ class controladorVista extends Controller
         return view('nueva_cuenta');
     }
 
-    public function procesarTarea(validadorTareas $request){
+    public function procesarTarea(validadorTareas $requestT){
         // Validar los datos de la tarea
-        $validated = $request->validated();
-
-        // Aquí puedes manejar la lógica después de la validación
-        // Por ejemplo, guardar la tarea en la base de datos
-        // Tarea::create($validated);
+        $validated = $requestT->validated();
 
         session()->flash('exito', 'Tarea guardada correctamente');
 
         return to_route('rutaCreacion');
-        //return redirect('/')->with('success', 'Tarea procesada correctamente');
     }
+
+    public function procesarCuenta(validadorNuevaCuenta $requestNC){
+        // Validar los datos de la tarea
+        $validacion = $requestNC->validated();
+
+        session()->flash('exito', 'Cuenta creada correctamente');
+
+        return to_route('rutaNuevaCuenta');
+    }
+
+    public function procesarInicioSesion(validadorInicioSesion $requestIS){
+        // Validar los datos de la tarea
+        $validacion = $requestIS->validated();
+
+        session()->flash('exito', 'Sesión iniciada correctamente');
+
+        return to_route('rutaInicio');
+    }
+
 }

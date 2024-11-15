@@ -139,31 +139,47 @@ input{
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
+
+    @if (session('exito'))
+    <script>
+        Swal.fire({
+            title: '{!! session('exito') !!}',
+            icon: 'success'
+        });
+    </script>
+  @endif
     
-    <form>
-        <h3>Nueva Cuenta</h3>
+    <form action="/procesarCuenta" method="POST">
+        @csrf
+        <h3>{{ __('Nueva Cuenta') }}</h3>
 
-        <label for="username">Nombre</label>
-        <input type="text" name="txtnombre">
+        <label for="username">{{ __('Nombre') }}</label>
+        <input type="text" name="txtnombre" value="{{ old('txtnombre') }}">
+        <small class="text-danger fst-italic">{{ $errors->first('txtnombre') }}</small>
 
-        <label for="username">Apellido</label>
-        <input type="text" name="txtapellido">
+        <label for="username">{{ __('Apellido') }}</label>
+        <input type="text" name="txtapellido" value="{{ old('txtapellido') }}">
+        <small class="text-danger fst-italic">{{ $errors->first('txtapellido') }}</small>
 
-        <label for="username">Gmail</label>
-        <input type="text" name="txtgmail">
+        <label for="username">{{ __('Gmail') }}</label>
+        <input type="text" name="txtgmail" value="{{ old('txtgmail') }}">
+        <small class="text-danger fst-italic">{{ $errors->first('txtgmail') }}</small>
 
-        <label for="password">Contraseña</label>
+        <label for="password">{{ __('Contraseña') }}</label>
         <input type="password" name="txtcontraseña">
+        <small class="text-danger fst-italic">{{ $errors->first('txtcontraseña') }}</small>
 
-        <label for="password">Confrimar contraseña</label>
+        <label for="password">{{ __('Confirmar contraseña') }}</label>
         <input type="password" name="txtconfrimarcontraseña">
+        <small class="text-danger fst-italic">{{ $errors->first('txtconfrimarcontraseña') }}</small>
 
-        <button class="btn2">Entrar</button>
+        <button type="submit" class="btn2">{{ __('Entrar') }}</button>
         <div class="social">
-          <div class="go">Inicio</div>
-          <div class="fb">iniciar sesión</div>
+            <div class="go"><a href="{{ route('rutaInicio') }}">{{ __('Inicio') }}</a></div>
+            <div class="fb"><a href="{{ route('rutaSesion') }}">{{ __('Iniciar sesión') }}</a></div>
         </div><br><br>
     </form>
+
 </body>
 </html>
 
