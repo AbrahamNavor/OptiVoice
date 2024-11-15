@@ -11,5 +11,7 @@ Route::get('/', [controladorVista::class,'inicio'])->name('rutaInicio');
 Route::get('/panel', [controladorVista::class,'panel'])->name('rutaPanel'); 
 Route::get('/creacion_tareas', [controladorVista::class,'creacion_tareas'])->name('rutaCreacion');
 Route::get('/index', [controladorVista::class,'index'])->name('rutaIndex');
+Route::get('/sesion', [controladorVista::class,'sesion'])->name('rutaSesion');
+Route::get('/nueva_cuenta', [controladorVista::class,'nueva_cuenta'])->name('rutaNuevaCuenta');
 
 Route::post('/procesarTarea', [controladorVista::class,'procesarTarea'])->name('rutaProcesarTarea');

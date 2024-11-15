@@ -23,6 +23,14 @@ class controladorVista extends Controller
         return view('index');
     }
 
+    public function sesion(){
+        return view('sesion');
+    }
+
+    public function nueva_cuenta(){
+        return view('nueva_cuenta');
+    }
+
     public function procesarTarea(validadorTareas $request){
         // Validar los datos de la tarea
         $validated = $request->validated();
