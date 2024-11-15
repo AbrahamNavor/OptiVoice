@@ -132,7 +132,7 @@ input{
             </script>
         @endif
 
-        <form method="POST" action="/procesarTarea">
+        <form method="POST" action="{{route('rutaCrearTarea')}}">
         @csrf
             <h1 style="text-align: center">{{__('Tarea nueva')}}</h1><br>
             <div class="mb-3 row">

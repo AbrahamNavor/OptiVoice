@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\validadorTareas;
+use Illuminate\Support\Facades\DB;
 
 class controladorVista extends Controller
 {
@@ -35,10 +36,19 @@ class controladorVista extends Controller
         // Validar los datos de la tarea
         $validated = $request->validated();
 
+
+        DB::table('tareas')->insert([
+            'nombre' => $validated['txtnombre'],
+            'descripcion' => $validated['txtdescripcion'],
+            'fecha' => $validated['txtfecha'],
+            'hora' => $validated['txthora'],
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
         // Aquí puedes manejar la lógica después de la validación
         // Por ejemplo, guardar la tarea en la base de datos
         // Tarea::create($validated);
-
+        $usuario = $request->input('txtnombre');
         session()->flash('exito', 'Tarea guardada correctamente');
 
         return to_route('rutaCreacion');

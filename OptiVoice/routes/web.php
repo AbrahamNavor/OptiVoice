@@ -17,4 +17,5 @@ Route::get('/nueva_cuenta', [controladorVista::class,'nueva_cuenta'])->name('rut
 Route::post('/procesarTarea', [controladorVista::class,'procesarTarea'])->name('rutaProcesarTarea');
 
 
-Route::post('/creacion_tareas', [controladorVista::class,'procesarTarea'])->name('rutaProcesarTarea');
+
+Route::post('creacion_tareas', [controladorVista::class,'procesarTarea'])->name('rutaCrearTarea');
