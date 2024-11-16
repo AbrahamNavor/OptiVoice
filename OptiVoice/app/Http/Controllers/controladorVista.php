@@ -34,9 +34,9 @@ class controladorVista extends Controller
         return view('nueva_cuenta');
     }
 
-    public function procesarTarea(validadorTareas $requestT){
+    public function procesarTarea(validadorTareas $request){
         // Validar los datos de la tarea
-        $validated = $requestT->validated();
+
 
         $validated = $request->validated();
 
