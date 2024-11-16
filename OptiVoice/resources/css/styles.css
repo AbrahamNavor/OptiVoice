@@ -1,15 +1,19 @@
  /* Estilos básicos */
- body, html {
-    height: 100%;
+ /* Estilos básicos */
+body, html {
+    min-height: 100%; /* Cambiado de height a min-height para permitir que el contenido crezca */
     margin: 0;
     font-family: 'Arial', sans-serif;
-    
-    align-items: center;
-    justify-content: center;
+    display: flex;
+    flex-direction: column; /* Permite al contenido crecer verticalmente */
     background: linear-gradient(135deg, #415d78, #f1bc76);
+    background-attachment: fixed; /* Hace que el fondo se mantenga fijo al hacer scroll */
+    background-size: cover; /* Asegura que el fondo cubra toda el área visible */
+    background-repeat: no-repeat;
+    background-position: center;
     color: #333;
-    /* overflow: hidden; */
 }
+
 
 /* Contenedor */
 .container {
