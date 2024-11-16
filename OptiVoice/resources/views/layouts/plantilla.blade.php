@@ -33,6 +33,11 @@
             <li class="nav-item">
                 <a class="nav-link {{request()->routeIs('rutaCreacion')?'text-warning':''}}" href="{{route('rutaCreacion')}}">{{__('Creación de tareas')}}</a>
             </li>
+            <li class="nav-item">
+            <div class="nav-container">
+                <a class="nav-link {{request()->routeIs('rutaIndex')?'text-warning':''}}" href="{{route('rutaIndex')}}">{{__('Cerrar sesión')}}</a>
+            </div>
+            </li>
             </ul>
         </div>
         </div>

@@ -45,7 +45,7 @@
 
 
     form{
-        height: 520px;
+        height: 550px;
         width: 400px;
         background-color: rgba(0, 0, 0, 0.6); /* Cambiado a un color más oscuro */
 
@@ -156,6 +156,7 @@
         <label for="password">{{ __('Contraseña') }}</label>
         <input type="password" id="password" name="password">
         <small class="text-danger fst-italic">{{ $errors->first('password') }}</small>
+
 
         <button type="submit" class="btn2">{{ __('Entrar') }}</button>
         <div class="social">

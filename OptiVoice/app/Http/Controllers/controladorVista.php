@@ -67,13 +67,26 @@ class controladorVista extends Controller
         return to_route('rutaNuevaCuenta');
     }
 
-    public function procesarInicioSesion(validadorInicioSesion $requestIS){
-        // Validar los datos de la tarea
+    public function procesarInicioSesion(validadorInicioSesion $requestIS)
+    {
+        // Validar los datos del formulario
         $validacion = $requestIS->validated();
 
-        session()->flash('exito', 'Sesión iniciada correctamente');
+        // Obtener el correo y la contraseña enviados
+        $correo = $requestIS->input('username');
+        $contrasena = $requestIS->input('password');
 
-        return to_route('rutaInicio');
+        // Validar que coincidan con los valores definidos
+        if ($correo === 'cliente1@gmail.com' && $contrasena === 'quevasahacerhoy') {
+            session()->flash('exito', 'Sesión iniciada correctamente');
+            return to_route('rutaInicio');
+        } else {
+            // En caso de error, redirigir con mensaje de error
+            return back()->withErrors([
+                'username' => 'Correo o contraseña incorrectos.',
+            ])->withInput();
+        }
     }
+
 
 }
