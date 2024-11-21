@@ -160,9 +160,11 @@
 
         <button type="submit" class="btn2">{{ __('Entrar') }}</button>
         <div class="social">
-          <div class="go"><a href="{{ route('rutaInicio') }}">{{ __('Inicio') }}</a></div>
-          <div class="fb"><a href="{{ route('rutaNuevaCuenta') }}">{{ __('Crear cuenta') }}</a></div>
-        </div><br><br>
+            <div class="go"><a href="{{ route('rutaInicio') }}">{{ __('Inicio') }}</a></div>
+            <div class="fb"><a href="{{ route('rutaNuevaCuenta') }}">{{ __('Crear cuenta') }}</a></div>
+        </div><br
+        <a class="btn2"><a href="{{ route('rutaPanelUsuarios') }}">{{ __('Administrar usuarios') }}</a></a>
+        <br><br>
     </form>
 </body>
 </html>

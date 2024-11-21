@@ -1,27 +1,19 @@
 <?php
 
-use App\Http\Controllers\controladorVista;
+use App\Http\Controllers\TareasController;
 use Illuminate\Support\Facades\Route;
 
+// Rutas para TareasController
+Route::get('/', [TareasController::class, 'home'])->name('rutaIndex');
+Route::get('/inicio', [TareasController::class, 'inicio'])->name('rutaInicio');
+Route::get('/panel', [TareasController::class, 'panel'])->name('rutaPanel');
+Route::get('/sesion', [TareasController::class, 'sesion'])->name('rutaSesion');
+Route::get('/nueva_cuenta', [TareasController::class, 'nuevaCuenta'])->name('rutaNuevaCuenta');
+Route::get('/panel_usuarios', [TareasController::class, 'panelUsuarios'])->name('rutaPanelUsuarios');
 
-
-/* Route::view('/','inicio')->name('rutaInicio');
-Route::view('/panel','panel')->name('rutaPanel');
-Route::view('/creacion_tareas','creacion_tareas')->name('rutaCreacion'); */
-
-Route::get('/inicio', [controladorVista::class,'inicio'])->name('rutaInicio');
-Route::get('/panel', [controladorVista::class,'panel'])->name('rutaPanel'); 
-Route::get('/creacion_tareas', [controladorVista::class,'creacion_tareas'])->name('rutaCreacion');
-Route::get('/', [controladorVista::class,'index'])->name('rutaIndex');
-Route::get('/sesion', [controladorVista::class,'sesion'])->name('rutaSesion');
-Route::get('/nueva_cuenta', [controladorVista::class,'nueva_cuenta'])->name('rutaNuevaCuenta');
-
-// Rutas POST
-Route::post('/procesarTarea', [controladorVista::class,'procesarTarea']);
-Route::post('/procesarCuenta', [controladorVista::class,'procesarCuenta']);
-Route::post('/procesarInicioSesion', [controladorVista::class,'procesarInicioSesion']);
-Route::post('/procesarTarea', [controladorVista::class,'procesarTarea'])->name('rutaProcesarTarea');
-
-
-
-Route::post('creacion_tareas', [controladorVista::class,'procesarTarea'])->name('rutaCrearTarea');
+// Rutas para las tareas
+Route::prefix('tareas')->group(function () {
+    Route::get('/', [TareasController::class, 'index'])->name('rutaTareas');
+    Route::get('/create', [TareasController::class, 'create'])->name('rutaCreacion');
+    Route::post('/', [TareasController::class, 'store'])->name('rutaCrearTarea');
+});
