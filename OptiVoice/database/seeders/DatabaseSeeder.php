@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
     {
 
         $this->call(tareaSeeder::class);
+        $this->call(CuentaSeeder::class);
         // User::factory(10)->create();
 
         /* User::factory()->create([
