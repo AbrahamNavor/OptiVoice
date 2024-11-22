@@ -9,46 +9,11 @@ use App\Http\Requests\validadorTareas;
 
 class TareasController extends Controller
 {
-    // Página principal
-    public function home()
-    {
-        return view('index');
-    }
-
-    // Página de inicio
-    public function inicio()
-    {
-        return view('inicio');
-    }
-
-    // Panel principal
-    public function panel()
-    {
-        return view('panel');
-    }
-
-    // Página de inicio de sesión
-    public function sesion()
-    {
-        return view('sesion');
-    }
-
-    // Página para crear una nueva cuenta
-    public function nuevaCuenta()
-    {
-        return view('nueva_cuenta');
-    }
-
-    // Panel de usuarios
-    public function panelUsuarios()
-    {
-        return view('panel_usuarios');
-    }
 
     // Listar tareas
     public function index()
     {
-        return view('tareas');
+        return view('panel');
     }
 
     // Crear nueva tarea
@@ -57,21 +22,22 @@ class TareasController extends Controller
         return view('creacion_tareas');
     }
 
-    // Almacenar tarea
-    public function store(validadorTareas $request)
+    // Almacenar tarea en la base de datos
+    public function storeTareas(validadorTareas $requestT)
     {
         DB::table('tareas')->insert([
-            'nombre' => $request->input('txtnombre'),
-            'descripcion' => $request->input('txtdescripcion'),
-            'fecha' => $request->input('txtfecha'),
-            'hora' => $request->input('txthora'),
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
+            "nombre" => $requestT->input('txtnombre'),
+            "descripcion" => $requestT->input('txtdescripcion'),
+            "fecha" => $requestT->input('txtfecha'),
+            "hora" => $requestT->input('txthora'),
+            "created_at" => Carbon::now(),
+            "updated_at" => Carbon::now(),
         ]);
 
-        session()->flash('exito', 'Se guardó la tarea: ' . $request->input('txtnombre'));
+        $tarea = $requestT->input('txtnombre');
+        session()->flash('exito', 'Se registro la tarea: ' . $tarea);
 
-        return redirect()->route('rutaCreacion');
+        return to_route('rutaSesion');
     }
 
     public function show($id) 

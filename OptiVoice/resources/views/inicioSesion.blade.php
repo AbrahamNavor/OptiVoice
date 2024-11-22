@@ -1,5 +1,5 @@
 @extends('layouts.plantillainicio')
-@section('titulo','Tarea nueva | OptiVoice')
+@section('titulo','Inicio de Sesion | OptiVoice')
 
 @section('contenido')
 @vite(['resources/css/styles.css'])
@@ -136,14 +136,33 @@
         <div class="shape"></div>
     </div>
 
-  @if (session('exito'))
-    <script>
-        Swal.fire({
-            title: '{!! session('exito') !!}',
-            icon: 'success'
-        });
-    </script>
-  @endif
+    {{-- Mensaje de exito y error --}}
+    @if(session('exito'))
+        <script>
+            Swal.fire({
+                title: "¡Éxito!",
+                text: "{{ session('exito') }}",
+                icon: "success",
+                confirmButtonText: "Aceptar",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Redirigir al formulario deseado
+                    window.location.href = "{{ route('rutaInicio') }}";
+                }
+            });
+        </script>
+    @endif
+
+    @if(session('error'))
+        <script>
+            Swal.fire({
+                title: "¡Error!",
+                text: "{{{ session('error') }}}",
+                icon: "error",
+                confirmButtonText: "Aceptar",
+            });
+        </script>
+    @endif
 
     <form action="/procesarInicioSesion" method="POST">
         @csrf
@@ -162,9 +181,8 @@
         <div class="social">
             <div class="go"><a href="{{ route('rutaInicio') }}">{{ __('Inicio') }}</a></div>
             <div class="fb"><a href="{{ route('rutaNuevaCuenta') }}">{{ __('Crear cuenta') }}</a></div>
-        </div><br
-        <a class="btn2"><a href="{{ route('rutaPanelUsuarios') }}">{{ __('Administrar usuarios') }}</a></a>
-        <br><br>
+        </div>
+        <br>
     </form>
 </body>
 </html>

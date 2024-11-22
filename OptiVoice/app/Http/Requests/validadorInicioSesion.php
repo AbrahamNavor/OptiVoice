@@ -8,6 +8,7 @@ class validadorInicioSesion extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
+     * @return bool
      */
     public function authorize(): bool
     {
@@ -22,7 +23,7 @@ class validadorInicioSesion extends FormRequest
     public function rules(): array
     {
         return [
-            'username' => 'required|string|max:255',
+            'username' => 'required|email',
             'password' => 'required|string|min:8',
         ];
     }

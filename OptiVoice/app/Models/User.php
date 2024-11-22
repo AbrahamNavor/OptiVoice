@@ -17,8 +17,13 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    // Especificar la tabla
+    protected $table = 'cuentas';
+
+    // Campos rellenables
     protected $fillable = [
-        'name',
+        'nombre',
+        'apellido',
         'email',
         'password',
     ];
@@ -28,6 +33,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    // Ocultar campos sensibles
     protected $hidden = [
         'password',
         'remember_token',

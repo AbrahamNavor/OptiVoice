@@ -14,7 +14,7 @@
                 <tr class="hover:bg-gray-50">
                     @foreach($row as $cell)
                         <td class="px-4 py-2 border-b border-gray-300">
-                            {{ $cell }}
+                            {!! $cell !!}
                         </td>
                     @endforeach
                 </tr>

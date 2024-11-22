@@ -13,7 +13,7 @@
     {{-- inicia navbar --}}
     <nav class="navbar bg-body-tertiary fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{{route('rutaInicio')}}">OptiVoice</a>
+        <a class="navbar-brand" href="{{route('rutaIndex')}}">OptiVoice</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
@@ -28,7 +28,7 @@
                 <a class="nav-link active {{request()->routeIs('rutaIndex')?'text-warning':''}}" aria-current="page" href="{{route('rutaIndex')}}">{{__('Inicio')}}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{request()->routeIs('rutaSesion')?'text-warning':''}}" href="{{route('rutaSesion')}}">{{__('Inicio de sesión')}}</a>
+                <a class="nav-link {{request()->routeIs('rutaSesion')?'text-warning':''}}" href="{{route('rutaInicioSesion')}}">{{__('Inicio de sesión')}}</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link {{request()->routeIs('rutaNuevaCuenta')?'text-warning':''}}" href="{{route('rutaNuevaCuenta')}}">{{__('Crear cuenta')}}</a>

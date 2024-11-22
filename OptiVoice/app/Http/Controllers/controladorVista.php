@@ -7,52 +7,25 @@ use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use App\Http\Requests\validadorTareas;
 
-class tareasController extends Controller
+class controladorVista extends Controller
 {
+
+    // Página principal
     public function home()
     {
         return view('index');
     }
 
-    public function index()
+    // Página de inicio
+    public function inicio()
     {
-        return view('tareas');
+        return view('inicio');
     }
 
-    public function create()
+    // Panel principal
+    public function panel()
     {
-        return view('creacion_tareas');
+        return view('panel');
     }
 
-    public function store(validadorTareas $request)
-    {
-        DB::table('tareas')->insert([
-            'nombre' => $request->input('txtnombre'),
-            'descripcion' => $request->input('txtdescripcion'),
-            'fecha' => $request->input('txtfecha'),
-            'hora' => $request->input('txthora'),
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
-        ]);
-
-        session()->flash('exito', 'Se guardó la tarea: ' . $request->input('txtnombre'));
-
-        return redirect()->route('rutaCreacion');
-    }
-
-    public function show($id)
-    {
-    }
-
-    public function edit($id)
-    {
-    }
-
-    public function update(Request $request, $id)
-    {
-    }
-
-    public function destroy($id)
-    {
-    }
 }
