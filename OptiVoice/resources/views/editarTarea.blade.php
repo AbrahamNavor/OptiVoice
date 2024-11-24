@@ -1,5 +1,5 @@
 @extends('layouts.plantilla')
-@section('titulo', 'Tarea nueva | OptiVoice')
+@section('titulo', ' Editar Tarea | OptiVoice')
 
 @section('contenido')
 
@@ -145,70 +145,60 @@
 @endpush
 
 
-@if(session('exito'))
-    <script>
-        Swal.fire({
-            title: "¡Éxito!",
-            text: "{{ session('exito') }}",
-            icon: "success",
-            confirmButtonText: "Aceptar",
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = "{{ route('rutaInicioSesion') }}";
-            }
-        });
-    </script>
-@endif
-
-@if(session('error'))
-    <script>
-        Swal.fire({
-            title: "¡Error!",
-            text: "{{ session('error') }}",
-            icon: "error",
-            confirmButtonText: "Aceptar",
-        });
-    </script>
-@endif
+    @if(session('exito'))
+        <script>
+            Swal.fire({
+                title: "¡Éxito!",
+                text: "{{ session('exito') }}",
+                icon: "success",
+                confirmButtonText: "Aceptar",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Redirigir al formulario deseado
+                    window.location.href = "{{ route('rutaPanel') }}";
+                }
+            });
+        </script>
+    @endif
 
 <!-- Formulario de creación de tarea -->
 
-    <form method="POST" action="{{ route('rutaStoreTarea') }}">
+    <form method="POST" action="{{ route('rutaActualizarTarea', ['id' => $tarea->id]) }}">
         @csrf
-
-        <h3>{{__('Tarea nueva')}}</h3><br>
+        @method('PUT')
+        <h3>{{__('Editar Tarea')}}</h3><br>
         <div class="mb-3 row">
             <label for="nombre" class="col-sm-2 col-form-label">{{__('Nombre')}}</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="txtnombre" placeholder="Ingresa tu nombre" value="{{old('txtnombre')}}">
+                <input type="text" class="form-control" name="txtnombre" placeholder="Ingresa tu nombre" value="{{old('txtnombre ', $tarea->nombre)}}">
             </div>
             <small class="text-danger fst-italic">{{ $errors->first('txtnombre') }}</small>
         </div>
         <div class="mb-3 row">
             <label for="descripcion" class="col-sm-2 col-form-label">{{__('Descripción')}}</label>
             <div class="col-sm-10">
-                <textarea type="text" class="form-control" name="txtdescripcion" rows="2" placeholder="Describe tu tarea aquí" value="{{old('txtdescripcion')}}"></textarea>
+                <textarea class="form-control" name="txtdescripcion" rows="2" placeholder="Describe tu tarea aquí">{{ old('txtdescripcion', $tarea->descripcion) }}</textarea>
             </div>
             <small class="text-danger fst-italic">{{ $errors->first('txtdescripcion') }}</small>
         </div>
         <div class="mb-3 row">
             <label for="fecha" class="col-sm-2 col-form-label">{{__('Fecha')}}</label>
             <div class="col-sm-10">
-                <input type="date" class="form-control" name="txtfecha" value="{{old('txtfecha')}}">
+                <input type="date" class="form-control" name="txtfecha" value="{{old('txtfecha', $tarea->fecha)}}">
             </div>
             <small class="text-danger fst-italic">{{ $errors->first('txtfecha') }}</small>
         </div>
         <div class="mb-3 row">
             <label for="hora" class="col-sm-2 col-form-label">{{__('Hora')}}</label>
             <div class="col-sm-10">
-                <input type="time" class="form-control" name="txthora" value="{{old('txthora')}}">
+                <input type="time" class="form-control" name="txthora" value="{{old('txthora', $tarea->hora)}}">
             </div>
             <small class="text-danger fst-italic">{{ $errors->first('txthora') }}</small>
         </div>
 
         <div class="row">
             <div class="col-sm-10 offset-sm-2">
-                <button type="submit" class="btn2">{{__('Enviar')}}</button>
+                <button type="submit" class="btn2">{{__('Actualizar Tarea')}}</button>
             </div>
         </div>
     </form>

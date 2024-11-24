@@ -2,23 +2,33 @@
 
 namespace App\View\Components;
 
-use Closure;
-use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
 class Table extends Component
 {
+    public $headers;
+    public $rows;
 
-    public array $headers;
-    public array $rows;
-
-    public function __construct(array $headers,array $rows)
+    /**
+     * Crear una nueva instancia del componente.
+     *
+     * @param  mixed  $headers
+     * @param  mixed  $rows
+     * @return void
+     */
+    public function __construct($headers, $rows)
     {
         $this->headers = $headers;
-        $this->rows = $rows;
+        // Si $rows es una colección, convertirlo a array
+        $this->rows = is_array($rows) ? $rows : $rows->toArray();
     }
 
-    public function render(): View|Closure|string
+    /**
+     * Renderizar el componente.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function render()
     {
         return view('components.table');
     }

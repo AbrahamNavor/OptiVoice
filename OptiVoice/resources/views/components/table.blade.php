@@ -10,15 +10,28 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($rows as $row)
+            @forelse($rows as $row)
                 <tr class="hover:bg-gray-50">
-                    @foreach($row as $cell)
-                        <td class="px-4 py-2 border-b border-gray-300">
-                            {!! $cell !!}
-                        </td>
+                    @foreach($row as $key => $value)
+                        @if($key !== 'actions') {{-- Ignorar columna de acciones aquí --}}
+                            <td class="px-4 py-2 border-b border-gray-300">{{ $value }}</td>
+                        @endif
                     @endforeach
+
+                    {{-- Si hay acciones, las mostramos en una columna aparte --}}
+                    @if(isset($row['actions']))
+                        <td class="px-4 py-2 border-b border-gray-300">
+                            {!! $row['actions'] !!}
+                        </td>
+                    @endif
                 </tr>
-            @endforeach
+            @empty
+                <tr>
+                    <td colspan="{{ count($headers) }}" class="px-4 py-2 text-center">
+                        {{ __('No hay registros disponibles.') }}
+                    </td>
+                </tr>
+            @endforelse
         </tbody>
     </table>
 </div>

@@ -1,8 +1,12 @@
 @extends('layouts.plantillainicio')
-@section('titulo','Nueva Cuenta | OptiVoice')
+@section('titulo','Olvidar mi contraseña | OptiVoice')
 
-@push('styles')
-  <style media="screen">
+@section('contenido')
+
+@vite(['resources/css/styles.css'])
+
+<!-- Stylesheet -->
+<style media="screen">
     *,
     *:before,
     *:after{
@@ -15,9 +19,10 @@
         display: flex;
         justify-content: flex-end;
     }
+
     .hamburger {
-        width: 30px; /* Ajusta el tamaño según necesites */
-        height: 30px; /* Ajusta el tamaño */
+        width: 30px;
+        height: 30px;
     }
 
     .hamburger span {
@@ -118,16 +123,8 @@
         text-decoration: none;
         color: inherit;
     }
-  </style>
-@endpush
 
-@section('contenido')
-
-<!-- Formulario de Nueva Cuenta -->
-<div class="background">
-    <div class="shape"></div>
-    <div class="shape"></div>
-</div>
+</style>
 
 {{-- Mensaje de exito y error --}}
 @if(session('exito'))
@@ -156,35 +153,19 @@
     </script>
 @endif
 
-<form action="/procesarCuenta" method="POST">
+<form action="/procesarOlvideContraseña" method="POST">
     @csrf
-    <h3>{{ __('Nueva Cuenta') }}</h3>
+    <h3>{{__('Olvidé mi contraseña') }}</h3>
 
-    <label for="username">{{ __('Nombre') }}</label>
-    <input type="text" name="txtnombre" value="{{ old('txtnombre') }}">
-    <small class="text-danger fst-italic">{{ $errors->first('txtnombre') }}</small>
+    <label for="username">{{ __('Ingresa tu correo electrónico') }}</label>
+    <input type="text" id="username" name="username" value="{{ old('username') }}">
+    <small class="text-danger fst-italic">{{ $errors->first('username') }}</small>
 
-    <label for="username">{{ __('Apellido') }}</label>
-    <input type="text" name="txtapellido" value="{{ old('txtapellido') }}">
-    <small class="text-danger fst-italic">{{ $errors->first('txtapellido') }}</small>
-
-    <label for="username">{{ __('Gmail') }}</label>
-    <input type="text" name="txtgmail" value="{{ old('txtgmail') }}">
-    <small class="text-danger fst-italic">{{ $errors->first('txtgmail') }}</small>
-
-    <label for="password">{{ __('Contraseña') }}</label>
-    <input type="password" name="txtcontraseña">
-    <small class="text-danger fst-italic">{{ $errors->first('txtcontraseña') }}</small>
-
-    <label for="password">{{ __('Confirmar contraseña') }}</label>
-    <input type="password" name="txtconfrimarcontraseña">
-    <small class="text-danger fst-italic">{{ $errors->first('txtconfrimarcontraseña') }}</small>
-
-    <button type="submit" class="btn2">{{ __('Entrar') }}</button>
+    <button type="submit" class="btn2">{{ __('Enviar Correo') }}</button>
     <div class="social">
-        <div class="go"><a href="{{ route('rutaInicio') }}">{{ __('Inicio') }}</a></div>
-        <div class="fb"><a href="{{ route('rutaInicioSesion') }}">{{ __('Iniciar sesión') }}</a></div>
+        <div class="go"><a href="{{ route('rutaIndex') }}">{{ __('Inicio') }}</a></div>
     </div>
+    <br>
 </form>
 
 @endsection

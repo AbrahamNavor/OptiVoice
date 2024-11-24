@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
+
+// Importa el modelo Tarea
+use App\Models\Tarea;
 
 class User extends Authenticatable
 {
@@ -50,5 +53,14 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    /**
+     * Relación con el modelo Tarea.
+     * Un usuario puede tener muchas tareas.
+     */
+    public function tareas()
+    {
+        return $this->hasMany(Tarea::class, 'user_id');
     }
 }
