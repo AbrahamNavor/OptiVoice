@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
 
+
 // Importa el modelo Tarea
 use App\Models\Tarea;
 
@@ -29,6 +30,7 @@ class User extends Authenticatable
         'apellido',
         'email',
         'password',
+        'rol',
     ];
 
     /**
@@ -62,5 +64,10 @@ class User extends Authenticatable
     public function tareas()
     {
         return $this->hasMany(Tarea::class, 'user_id');
+    }
+
+    public function esAdministrador()
+    {
+        return $this->rol === 'admin'; // Asegúrate de que 'rol' esté bien asignado y exista en la tabla
     }
 }

@@ -4,6 +4,7 @@ use App\Http\Controllers\TareasController;
 use App\Http\Controllers\controladorVista;
 use App\Http\Controllers\usuariosController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\verificarRolAdmin;
 
 // Rutas de paginas principales
 Route::get('/', [controladorVista::class, 'home'])->name('rutaIndex');
@@ -13,7 +14,6 @@ Route::get('/redireccion', [controladorVista::class, 'redireccion'])->name('ruta
 // Rutas para usuarios
 Route::get('/inicioSesion', [usuariosController::class, 'inicioSesion'])->name('rutaInicioSesion');
 Route::get('/nueva_cuenta', [usuariosController::class, 'nuevaCuenta'])->name('rutaNuevaCuenta');
-Route::get('/panel_usuarios', [usuariosController::class, 'panelUsuarios'])->name('rutaPanelUsuarios');
 Route::post('/procesarCuenta', [usuariosController::class, 'storeUsuarios']);
 Route::post('/procesarInicioSesion', [usuariosController::class, 'procesoInicioSesion']);
 Route::get('/olvidarContraseña', [usuariosController::class, 'olvideContraseña'])->name('rutaOlvideContraseña');
@@ -21,6 +21,9 @@ Route::post('/procesarOlvideContraseña', [usuariosController::class, 'procesoOl
 Route::get('/usuarios/{id}/editar', [usuariosController::class, 'edit'])->name('rutaUsuarioEditar');
 Route::put('/usuarios/{id}', [usuariosController::class, 'update'])->name('rutaUsuarioActualizar');
 Route::delete('/usuarios/{id}', [usuariosController::class, 'destroy'])->name('rutaUsuarioEliminar');
+Route::post('/logout', [usuariosController::class, 'logout'])->name('rutaCerrarSesion');
+Route::get('/panel-usuarios', [UsuariosController::class, 'panelUsuarios'])->name('rutaPanelUsuarios')->middleware('verificarRolAdmin');
+Route::get('/resetContraseña/{token}/{email}', [usuariosController::class, 'procesoOlvideContraseña'])->name('rutaResetContraseña');
 
 // Rutas para las tareas
 Route::get('/tarea/crear', [TareasController::class, 'create'])->name('rutaCreacion');

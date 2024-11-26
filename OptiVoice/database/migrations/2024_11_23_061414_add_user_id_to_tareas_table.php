@@ -12,8 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('tareas', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id')->after('id'); // Agregar user_id después de id
-            $table->foreign('user_id')->references('id')->on('cuentas')->onDelete('cascade'); // Relación con la tabla 'cuentas'
+            // Asegúrate de que la columna 'user_id' esté presente antes de crear la clave foránea
+            $table->unsignedBigInteger('user_id')->after('id');
+            $table->foreign('user_id')->references('id')->on('cuentas')->onDelete('cascade');
         });
     }
 
@@ -23,8 +24,9 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('tareas', function (Blueprint $table) {
-            $table->dropForeign(['user_id']); // Eliminar la clave foránea
-            $table->dropColumn('user_id');    // Eliminar la columna
+            // Eliminar la clave foránea y la columna 'user_id'
+            $table->dropForeign(['user_id']);
+            $table->dropColumn('user_id');
         });
     }
 };

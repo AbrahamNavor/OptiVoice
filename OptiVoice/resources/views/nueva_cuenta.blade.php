@@ -137,10 +137,6 @@
             text: "{{ session('exito') }}",
             icon: "success",
             confirmButtonText: "Aceptar",
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = "{{ route('rutaInicioSesion') }}";
-            }
         });
     </script>
 @endif
@@ -163,19 +159,19 @@
     <label for="username">{{ __('Nombre') }}</label>
     <input type="text" name="txtnombre" value="{{ old('txtnombre') }}">
     <small class="text-danger fst-italic">{{ $errors->first('txtnombre') }}</small>
-
+    <br>
     <label for="username">{{ __('Apellido') }}</label>
     <input type="text" name="txtapellido" value="{{ old('txtapellido') }}">
     <small class="text-danger fst-italic">{{ $errors->first('txtapellido') }}</small>
-
+    <br>
     <label for="username">{{ __('Gmail') }}</label>
     <input type="text" name="txtgmail" value="{{ old('txtgmail') }}">
     <small class="text-danger fst-italic">{{ $errors->first('txtgmail') }}</small>
-
+    <br>
     <label for="password">{{ __('Contraseña') }}</label>
     <input type="password" name="txtcontraseña">
     <small class="text-danger fst-italic">{{ $errors->first('txtcontraseña') }}</small>
-
+    <br>
     <label for="password">{{ __('Confirmar contraseña') }}</label>
     <input type="password" name="txtconfrimarcontraseña">
     <small class="text-danger fst-italic">{{ $errors->first('txtconfrimarcontraseña') }}</small>

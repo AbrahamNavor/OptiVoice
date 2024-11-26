@@ -31,6 +31,25 @@ class usuariosController extends Controller
         return view('nueva_cuenta');
     }
 
+    public function olvideContraseña()
+    {
+        return view('olvidarcontraseña');
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        // Invalida la sesión actual
+        $request->session()->invalidate();
+
+        // Regenera el token CSRF por seguridad
+        $request->session()->regenerateToken();
+
+        // Redirige al usuario a la página deseada
+        return to_route('rutaIndex'); // Cambia '/login' según tu ruta
+    }
+
     // Panel de usuarios
     public function panelUsuarios()
     {
@@ -84,7 +103,7 @@ class usuariosController extends Controller
         $token = Password::createToken($usuario);
 
         // Crear un enlace para restablecer contraseña
-        $resetUrl = route('password.reset', ['token' => $token, 'email' => $usuario->email]);
+        $resetUrl = route('rutaResetContraseña', ['token' => $token, 'email' => $usuario->email]);
 
         // Enviar correo al usuario
         Mail::to($usuario->email)->send(new EnviarEnlaceRestablecimiento($resetUrl));

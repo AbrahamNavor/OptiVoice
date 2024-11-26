@@ -50,20 +50,27 @@ class TareasController extends Controller
     // Almacenar tarea en la base de datos
     public function storeTareas(validadorTareas $requestT)
     {
+        // Verificar si el usuario está autenticado
+        if (!Auth::check()) {
+            return redirect()->route('rutaInicioSesion')->withErrors(['error' => 'Debe iniciar sesión para registrar una tarea']);
+        }
+
         // Crear la tarea asociada al usuario autenticado
         $tarea = new Tarea([
-            'nombre' => $requestT['txtnombre'],
-            'descripcion' => $requestT['txtdescripcion'],
-            'fecha' => $requestT['txtfecha'],
-            'hora' => $requestT['txthora'],
-            'user_id' => Auth::id(),  // Asociar la tarea al usuario autenticado
+            'nombre' => $requestT->input('txtnombre'),
+            'descripcion' => $requestT->input('txtdescripcion'),
+            'fecha' => $requestT->input('txtfecha'),
+            'hora' => $requestT->input('txthora'),
+            'user_id' => Auth::id(),
         ]);
 
         // Guardar la tarea en la base de datos
         $tarea->save();
 
         // Mensaje de éxito
-        session()->flash('exito', 'Se registró la tarea: ' . $requestT['txtnombre']);
+        session()->flash('exito',
+            'Se registró la tarea: ' . $requestT->input('txtnombre')
+        );
 
         // Redirigir a la ruta del panel o a otra página
         return redirect()->route('rutaPanel');

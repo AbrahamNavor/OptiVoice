@@ -16,7 +16,6 @@
             margin: 0 auto;
             color: white;
         }
-        /* Opcional: estilo para que el borde se vea mejor */
         .timeline-image:before {
             content: "";
             position: absolute;
@@ -26,6 +25,19 @@
             border: 5px solid #ffffff; /* Bordes blancos para mejor visibilidad */
             top: -5px;
             left: -5px;
+        }
+
+        /* Estilo para texto principal en color negro */
+        .masthead .masthead-subheading,
+        .masthead .masthead-heading {
+            color: black !important; /* Aseguramos que el color sea negro */
+        }
+
+        /* Estilo para agrandar el botón */
+        .btn.btn-highlight {
+            padding: 20px 40px; /* Ajusta el espacio interno del botón */
+            font-size: 1.5rem; /* Incrementa el tamaño del texto */
+            border-radius: 10px; /* Redondeo opcional */
         }
     </style>
 @endpush
@@ -76,7 +88,7 @@
             </div>
         </div>
     </section>
-    
+
     <!-- About-->
     <section class="page-section" id="about">
         <div class="container">

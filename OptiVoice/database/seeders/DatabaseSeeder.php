@@ -13,14 +13,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-
-        $this->call(tareaSeeder::class);
         $this->call(CuentaSeeder::class);
-        // User::factory(10)->create();
-
-        /* User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]); */
     }
 }

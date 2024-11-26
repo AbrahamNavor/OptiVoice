@@ -160,12 +160,13 @@
     <label for="username">{{ __('Usuario') }}</label>
     <input type="text" id="username" name="username" value="{{ old('username') }}">
     <small class="text-danger fst-italic">{{ $errors->first('username') }}</small>
-
+    <br>
     <label for="password">{{ __('Contraseña') }}</label>
     <input type="password" id="password" name="password">
     <small class="text-danger fst-italic">{{ $errors->first('password') }}</small>
+    <br>
     <a href="{{route('rutaOlvideContraseña')}}">{{ __('¿Has olvidado tu contraseña?') }}</a>
-
+    <br>
     <button type="submit" class="btn2">{{ __('Entrar') }}</button>
     <div class="social">
         <div class="go"><a href="{{ route('rutaInicio') }}">{{ __('Inicio') }}</a></div>

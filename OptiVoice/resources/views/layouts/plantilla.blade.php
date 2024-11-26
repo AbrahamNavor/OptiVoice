@@ -37,22 +37,31 @@
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li class="nav-item">
-                            <a class="nav-link active {{request()->routeIs('rutaInicio') ? 'text-warning' : ''}}" aria-current="page" href="{{route('rutaInicio')}}">{{__('Inicio')}}</a>
+                            <a class="nav-link active {{ request()->routeIs('rutaInicio') ? 'text-warning' : '' }}" aria-current="page" href="{{ route('rutaInicio') }}">
+                                {{ __('Inicio') }}
+                            </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{request()->routeIs('rutaPanelUsuarios') ? 'text-warning' : ''}}" href="{{route('rutaPanelUsuarios')}}">{{__('Panel de usuarios')}}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{request()->routeIs('rutaPanel') ? 'text-warning' : ''}}" href="{{route('rutaPanel')}}">{{__('Panel de control')}}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{request()->routeIs('rutaCreacion') ? 'text-warning' : ''}}" href="{{route('rutaCreacion')}}">{{__('Creación de tareas')}}</a>
-                        </li>
-                        <li class="nav-item">
-                            <div class="nav-container">
-                                <a class="nav-link {{request()->routeIs('rutaIndex') ? 'text-warning' : ''}}" href="{{route('rutaIndex')}}">{{__('Cerrar sesión')}}</a>
-                            </div>
-                        </li>
+
+                        <!-- Mostrar solo para administradores -->
+                        @if(Auth::check() && Auth::user()->esAdministrador())
+                            <li class="nav-item">
+                                <a class="nav-link {{ request()->routeIs('rutaPanelUsuarios') ? 'text-warning' : '' }}" href="{{ route('rutaPanelUsuarios') }}">
+                                    {{ __('Panel de usuarios') }}
+                                </a>
+                            </li>
+                        @endif
+
+                        <!-- Opciones generales -->
+                        @if(Auth::check())
+                            <li class="nav-item">
+                                <form action="{{ route('rutaCerrarSesion') }}" method="POST" style="display: inline;">
+                                    @csrf
+                                    <button type="submit" class="btn btn-link nav-link {{ request()->routeIs('rutaIndex') ? 'text-warning' : '' }}" style="padding: 0;">
+                                        {{ __('Cerrar sesión') }}
+                                    </button>
+                                </form>
+                            </li>
+                        @endif
                     </ul>
                 </div>
             </div>
